@@ -50,17 +50,15 @@ class MemberProfileViewModel(
         }
     }
 
-    fun updateUserProfileWithBFP(
+    fun updateUserProfileWithBMI(
         email: String,
         name: String,
         age: Int?,
         height: Float?,
         weight: Float?,
-        phoneNumber: String?,
-        address: String?,
         role: String = "member"
     ) {
-        Log.d(TAG, "updateUserProfileWithBFP called with - Email: $email, Name: $name, Age: $age, Height: $height, Weight: $weight, Phone: $phoneNumber, Address: $address")
+        Log.d(TAG, "updateUserProfileWithBMI called with - Email: $email, Name: $name, Age: $age, Height: $height, Weight: $weight")
 
         viewModelScope.launch {
             _isLoading.value = true
@@ -73,17 +71,14 @@ class MemberProfileViewModel(
                     return@launch
                 }
 
-                // Calculate Body Fat Percentage (BFP) based on height and weight
-                val bfp = calculateBFP(height, weight)
+                val bmi = calculateBMI(height, weight)
                 val updatedProfile = currentProfile.copy(
                     name = name,
                     age = age,
                     height = height,
                     weight = weight,
-                    bfp = bfp,
+                    bmi = bmi,
                     role = role,
-                    phoneNumber = phoneNumber,
-                    address = address,
                     id = currentProfile.id,
                     email = currentProfile.email,
                     joinDate = currentProfile.joinDate,
@@ -105,9 +100,9 @@ class MemberProfileViewModel(
         }
     }
 
-    private fun calculateBFP(heightCm: Float?, weightKg: Float?): Float? {
+    private fun calculateBMI(heightCm: Float?, weightKg: Float?): Float? {
         if (heightCm == null || weightKg == null || heightCm <= 0) return null
         val heightM = heightCm / 100f
-        val bfp = (weightKg / (heightM * heightM)) * 0.85f  // A simplified BFP calculation formula
-        return bfp
+        return weightKg / (heightM * heightM)
     }
+}
