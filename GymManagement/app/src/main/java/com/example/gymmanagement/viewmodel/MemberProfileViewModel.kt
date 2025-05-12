@@ -85,3 +85,24 @@ class MemberProfileViewModel(
                     membershipStatus = currentProfile.membershipStatus ?: "active"
                 )
 
+                userRepository.updateUserProfile(currentProfile.id, updatedProfile)
+                    .onSuccess { profile ->
+                        _userProfile.value = profile
+                    }
+                    .onFailure { e ->
+                        _error.value = e.message ?: "Failed to update profile"
+                    }
+            } catch (e: Exception) {
+                _error.value = e.message ?: "An unexpected error occurred"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
+    private fun calculateBMI(heightCm: Float?, weightKg: Float?): Float? {
+        if (heightCm == null || weightKg == null || heightCm <= 0) return null
+        val heightM = heightCm / 100f
+        return weightKg / (heightM * heightM)
+    }
+}
