@@ -1,18 +1,12 @@
 section 1
 
-|------------------------------------------|
-| Group 5 members        |    ID Number    |
-|------------------------------------------|
-| 1. Beliul Tilahun      |    UGR/3671/15  |
-|------------------------------------------|
-| 2. Habtewold Degfi     |    UGR/9739/15  |
-|------------------------------------------|
-| 3. Hawi Andarsa        |    UGR/5508/15  |
-|------------------------------------------|
-| 4. Nesrellah Adem      |    UGR/4004/15  |
-|------------------------------------------|
-| 5. Venusia Biruk       |    UGR/3522/1   |
-|------------------------------------------|
+|  Name               | ID          |
+|---------------------|-------------|
+|Beliul Tilahun			  |	UGR/3671/15 |
+|	Habtewold Degfie		| UGR/9739/15 |
+|Hawi Andarsa			  	| UGR/5508/15 |
+|Nesrellah Adem		  	|	UGR/4004/15 |
+|Venusia Biruk			  | UGR/3522/15 |
 
 Gym Management System
 Overview: A system designed for gym administrators and members to manage day-to-day activities efficiently.
